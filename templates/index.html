@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>汉字转带声调拼音</title>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <p class="eyebrow">PINYIN TOOL</p>
+      <h1>汉字转带声调拼音</h1>
+      <p class="subtitle">按词语识别上下文，生成完整拼音和逐字结果。</p>
+    </header>
+
+    <section class="card">
+      <div class="section-title">
+        <label for="textInput">输入汉字</label>
+        <span id="counter">0 / 5000</span>
+      </div>
+      <textarea id="textInput" maxlength="5000" placeholder="请输入你需要查询拼音的字词句；词句根据语义进行拼音输出，字输出多音字结果" autofocus></textarea>
+      <div class="actions">
+        <button id="clearBtn" class="button secondary" type="button">清空</button>
+        <button id="convertBtn" class="button primary" type="button">转换拼音</button>
+      </div>
+      <p id="message" class="message" aria-live="polite"></p>
+    </section>
+
+    <section class="card">
+      <div class="section-title">
+        <h2>完整拼音</h2>
+        <button id="copyFullBtn" class="copy-button" type="button" disabled>复制全部</button>
+      </div>
+      <div id="fullPinyin" class="full-output placeholder">转换结果会显示在这里</div>
+    </section>
+
+    <section class="card">
+      <div class="section-title">
+        <h2>分割拼音</h2>
+        <button id="copySplitBtn" class="copy-button" type="button" disabled>复制分割结果</button>
+      </div>
+      <div id="splitPinyin" class="split-output empty-state">每个字符均提供“字(音)”“拼音”“字+音”三种复制格式。</div>
+    </section>
+
+    <footer class="site-footer">
+      <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">你的备案号</a>
+      <span class="footer-divider" aria-hidden="true"></span>
+      <time id="currentTime" aria-label="当前时间"></time>
+    </footer>
+  </main>
+
+  <dialog id="definitionDialog" class="definition-dialog" aria-labelledby="definitionTitle">
+    <div class="definition-header">
+      <h2 id="definitionTitle">字音释义</h2>
+      <button id="closeDefinitionBtn" class="dialog-close" type="button" aria-label="关闭释义">×</button>
+    </div>
+    <div id="definitionContent" class="definition-content"></div>
+  </dialog>
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+</html>
