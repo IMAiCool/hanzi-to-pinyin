@@ -4,6 +4,8 @@ from typing import Any
 
 import jieba,re
 from pypinyin import Style, pinyin
+from get_definition import get_definition
+
 
 
 def get_pinyin(text: str) -> list[dict[str, Any]]:
@@ -14,7 +16,7 @@ def get_pinyin(text: str) -> list[dict[str, Any]]:
     tex=re.sub(r'[^\u4e00-\u9fff]', '', text)
     
     if len(tex)==1:
-        for index,candidates in enumerate(multi_pinyin(tex),start=1):
+        for index,candidates in enumerate(get_definition(tex).keys(),start=1):
             result.append(
                 {
                     "index": index, "char": tex, "pinyin": candidates
@@ -42,8 +44,6 @@ def get_pinyin(text: str) -> list[dict[str, Any]]:
     if len(result) != len(text):
         raise ValueError("转换结果与原文字符数量不一致")
     return result
-def multi_pinyin(char):
-    return pinyin(char,style=Style.TONE,heteronym=True)[0]
 
 if __name__=="__main__":
-    print(get_pinyin("重量"))
+    print(get_pinyin("行"))
