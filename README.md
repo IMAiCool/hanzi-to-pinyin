@@ -154,3 +154,8 @@ docker run --rm flask-hanzi-pinyin ls -la /app
 ```bash
 docker exec flask-hanzi-pinyin python -c "import requests; print(requests.get('https://www.zdic.net/hans/行', timeout=10).status_code)"
 ```
+
+### demo网站
+```text
+https://pinyin.imaicool.com
+```
