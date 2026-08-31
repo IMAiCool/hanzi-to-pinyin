@@ -1,7 +1,7 @@
 # 汉字转带声调拼音
 
 一个基于 Flask、jieba 和 pypinyin 的汉字拼音转换工具，支持上下文分词、多音字读音展示、逐字复制和汉字释义查询。
-单字附带释义，数据来源于https://www.zdic.net，基于bs4模块实现
+基于bs4+requests获取获取单字释义，数据来源于https://www.zdic.net
 
 ## 功能
 
