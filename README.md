@@ -157,5 +157,5 @@ docker exec flask-hanzi-pinyin python -c "import requests; print(requests.get('h
 
 ### demo网站
 
-[demo网站]:https://pinyin.imaicool.com
+[demo网站](https://pinyin.imaicool.com)
 
